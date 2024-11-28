@@ -1,37 +1,3 @@
-main.py:
--------
-from data import addData
-from printE import printExpenses
-from total import getTotal
-
-print("Expense Tracker V1")
-name = input("What is your name? ")
-Continue = True
-
-while Continue:
-    print("MAIN MENU")
-    print("="*40)
-    print("[1] ADD DATA")
-    print("[2] GET TOTAL")
-    print("[3] PRINT EXPENSES")
-    print("[4] QUIT")
-    print("="*40)
-    callDown = int(input())
-    
-    if callDown == 1:
-        addData()
-    elif callDown == 2:
-        getTotal()
-    elif callDown == 3:
-        print("="*40)
-        printExpenses()
-        print("="*40)
-    elif callDown == 4:
-        print("*"*40)
-        print(name + ", I hope you found the tool helpful!")
-        print("*"*40)
-        Continue = False
-
 data.py:
 -------
 housingExpenses = []
@@ -77,6 +43,95 @@ def addData():
             entertaimentExpenses.append([description, cost])
         elif(category_ID == 6):
             savingsExpenses.append([description, cost])
+
+main.py:
+-------
+from data import addData
+from printE import printExpenses
+from total import getTotal
+
+print("Expense Tracker V1")
+name = input("What is your name? ")
+Continue = True
+
+while Continue:
+    print("MAIN MENU")
+    print("="*40)
+    print("[1] ADD DATA")
+    print("[2] GET TOTAL")
+    print("[3] PRINT EXPENSES")
+    print("[4] QUIT")
+    print("="*40)
+    
+    try:
+        callDown = int(input())
+    
+    except ValueError: 
+        print("That wasn't a valid number. Try again!")
+    
+    else:
+        if callDown == 1:
+            addData()
+        elif callDown == 2:
+            getTotal()
+        elif callDown == 3:
+            print("="*40)
+            printExpenses()
+            print("="*40)
+        elif callDown == 4:
+            print("*"*40)
+            print(name + ", I hope you found the tool helpful!")
+            print("*"*40)
+            Continue = False
+    finally:
+        print()
+
+printE.py:
+---------
+from data import housingExpenses
+from data import foodExpenses
+from data import transportationExpenses
+from data import insuranceExpenses
+from data import entertaimentExpenses
+from data import savingsExpenses
+
+def printExpenses():
+    print(f"{'House Expenses':<15} {'Amount ($)':>10}")
+    print("–"*40)
+    for entry in housingExpenses:
+        descript, price = entry
+        print(f"{descript:<15} {price:>10}")
+    print("\n")
+    print(f"{'Food Expenses':<15} {'Amount ($)':>10}")
+    print("–"*40)
+    for entry in foodExpenses:
+        descript, price = entry
+        print(f"{descript:<15} {price:>10}")
+    print("\n")
+    print(f"{'Transportation':<15} {'Amount ($)':>10}")
+    print("–"*40)
+    for entry in transportationExpenses:
+        descript, price = entry
+        print(f"{descript:<15} {price:>10}")
+    print("\n")
+    print(f"{'Insurance':<15} {'Amount ($)':>10}")
+    print("–"*40)
+    for entry in insuranceExpenses:
+        descript, price = entry
+        print(f"{descript:<15} {price:>10}")
+    print("\n")
+    print(f"{'Entertaiment':<15} {'Amount ($)':>10}")
+    print("–"*40)
+    for entry in entertaimentExpenses:
+        descript, price = entry
+        print(f"{descript:<15} {price:>10}")
+    print("\n")
+    print(f"{'Savings':<15} {'Amount ($)':>10}")
+    print("–"*40)
+    for entry in savingsExpenses:
+        descript, price = entry
+        print(f"{descript:<15} {price:>10}")
+    print("\n")
 
 total.py:
 --------
@@ -129,51 +184,4 @@ def getTotal():
     print("—"*40)
     print("TOTAL MONEY SPENT: $", total)
     print("="*40)
-
-printE.py:
----------
-from data import housingExpenses
-from data import foodExpenses
-from data import transportationExpenses
-from data import insuranceExpenses
-from data import entertaimentExpenses
-from data import savingsExpenses
-
-def printExpenses():
-    print(f"{'House Expenses':<15} {'Amount ($)':>10}")
-    print("–"*40)
-    for entry in housingExpenses:
-        descript, price = entry
-        print(f"{descript:<15} {price:>10}")
-    print("\n")
-    print(f"{'Food Expenses':<15} {'Amount ($)':>10}")
-    print("–"*40)
-    for entry in foodExpenses:
-        descript, price = entry
-        print(f"{descript:<15} {price:>10}")
-    print("\n")
-    print(f"{'Transportation':<15} {'Amount ($)':>10}")
-    print("–"*40)
-    for entry in transportationExpenses:
-        descript, price = entry
-        print(f"{descript:<15} {price:>10}")
-    print("\n")
-    print(f"{'Insurance':<15} {'Amount ($)':>10}")
-    print("–"*40)
-    for entry in insuranceExpenses:
-        descript, price = entry
-        print(f"{descript:<15} {price:>10}")
-    print("\n")
-    print(f"{'Entertaiment':<15} {'Amount ($)':>10}")
-    print("–"*40)
-    for entry in entertaimentExpenses:
-        descript, price = entry
-        print(f"{descript:<15} {price:>10}")
-    print("\n")
-    print(f"{'Savings':<15} {'Amount ($)':>10}")
-    print("–"*40)
-    for entry in savingsExpenses:
-        descript, price = entry
-        print(f"{descript:<15} {price:>10}")
-    print("\n")
 
