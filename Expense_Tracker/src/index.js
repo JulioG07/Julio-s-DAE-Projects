@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "firebase/firestore";
-import { getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 
 console.log('JavaScript file loaded'); // Add this line to check if the script is loaded
 
@@ -58,7 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
                 .then(() => {
                     signupForm.reset()
-                    console.log('User information added to Firestore')
+                    //console.log('User information added to Firestore')
+                    window.location.href = 'home.html';
                 })
                 .catch((err) => {
                     console.log(err.message)
@@ -69,10 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
     //login and login out users 
     const logoutButton = document.querySelector('.logout')
     if (logoutButton) {
-        logoutButton.addEventListener('click', (e) => {
+        logoutButton.addEventListener('click', () => {
             signOut(auth)
                 .then(() => {
-                    console.log('The user signed out')
+                    //console.log('The user signed out')
+                    window.location.href = 'login.html';
                 })
                 .catch((err) => {
                     console.log(err.message)
@@ -88,11 +90,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const password = loginForm.password.value
             signInWithEmailAndPassword(auth, email, password)
                 .then((cred) => {
-                    console.log('user logged in: ', cred.user)
+                    //console.log('user logged in: ', cred.user)
+                    window.location.href = 'home.html';
                 })
                 .catch((err) => {
                     console.log(err.message)
                 })
         })
     }
+    // Listen for auth state changes
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            console.log('User is logged in:', user)
+        } else {
+            console.log('User is logged out')
+        }
+    })
 })
