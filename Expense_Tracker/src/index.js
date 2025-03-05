@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "firebase/firestore";
+import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, doc, getDoc } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 
 console.log('JavaScript file loaded'); // Add this line to check if the script is loaded
@@ -29,9 +29,9 @@ onSnapshot(q, (snapshot) => {
     let users = []
     snapshot.forEach(doc => {
         users.push({ ...doc.data(), id: doc.id })
-    })
+        });
     console.log(users)
-})
+    })
 
 document.addEventListener('DOMContentLoaded', () => {
     //siging up users 
@@ -98,12 +98,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
         })
     }
+    // Function to retrieve and display user first name
+    function displayFirstName(userID) {
+        console.log('Fetching data for userID:', userID); // Log the userID
+        const userDocRef = doc(db, 'users', userID);
+        getDoc(userDocRef)
+            .then((doc) => {
+                if (doc.exists()) {
+                    const userData = doc.data();
+                    document.getElementById('firstName').textContent = userData.Fname;
+                } else {
+                    console.log('No such document!');
+                }
+            })
+            .catch((error) => {
+                console.log('Error getting document:', error);
+            });
+    }
     // Listen for auth state changes
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            console.log('User is logged in:', user)
+            console.log('User is logged in:', user);
+            displayFirstName(user.uid);
         } else {
-            console.log('User is logged out')
+            console.log('User is logged out');
         }
     })
 })
