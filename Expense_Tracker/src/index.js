@@ -1,9 +1,8 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, doc, getDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, doc, getDoc, setDoc, where } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 
-console.log('JavaScript file loaded'); // Add this line to check if the script is loaded
-
+console.log('JavaScript file loaded');
 const firebaseConfig = {
     apiKey: "AIzaSyAIQp_M0LiPkucvamm6Dd8mbl_TjzOc-JM",
     authDomain: "expense-tracker-v1-6483a.firebaseapp.com",
@@ -47,14 +46,14 @@ document.addEventListener('DOMContentLoaded', () => {
             createUserWithEmailAndPassword(auth, email, password)
                 .then((cred) => {
                     console.log('user created:', cred.user)
-                    // Add user information to Firestore
-                    return addDoc(colRef, {
+                    // Add user information to Firestore Database
+                    return setDoc(doc(db, 'users', cred.user.uid), { 
                         Fname: firstName,
                         Lname: lastName,
                         Email: email,
                         createdAt: serverTimestamp(),
                         userId: cred.user.uid
-                    })
+                    });
                 })
                 .then(() => {
                     signupForm.reset()
@@ -98,30 +97,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
         })
     }
-    // Function to retrieve and display user first name
-    function displayFirstName(userID) {
-        console.log('Fetching data for userID:', userID); // Log the userID
-        const userDocRef = doc(db, 'users', userID);
-        getDoc(userDocRef)
-            .then((doc) => {
-                if (doc.exists()) {
-                    const userData = doc.data();
-                    document.getElementById('firstName').textContent = userData.Fname;
-                } else {
-                    console.log('No such document!');
-                }
-            })
-            .catch((error) => {
-                console.log('Error getting document:', error);
-            });
+
+    function displayFirstNameByQuery(userID) {
+        console.log('Searching for user with ID:', userID);
+        // Create a query to find documents where userId equals the provided userID
+        const q = query(collection(db, 'users'), where('userId', '==', userID));
+    
+        onSnapshot(q, (snapshot) => {
+            if (snapshot.empty) {
+                console.error('No document found with userId matching:', userID);
+                return;
+            }
+            // We should only have one document matching the userId
+            const userData = snapshot.docs[0].data();
+            const firstNameElement = document.getElementById('firstName');
+            if (firstNameElement) {
+                firstNameElement.textContent = userData.Fname;
+                console.log("User first name displayed:", userData.Fname);
+            } else {
+                console.error('firstName element not found in the DOM');
+            }
+        });
     }
-    // Listen for auth state changes
+    //call functions here
     onAuthStateChanged(auth, (user) => {
-        if (user) {
-            console.log('User is logged in:', user);
-            displayFirstName(user.uid);
-        } else {
-            console.log('User is logged out');
-        }
+    if (user) {
+        console.log('User is logged in:', user);
+        displayFirstNameByQuery(user.uid);
+    } else {
+        console.log('User is logged out');
+    }
     })
 })
