@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Example</title>
+</head>
+<body>
+    <h1>Enter your name</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+    {% if submitted_name %}
+        <p>You entered: <strong>{{ submitted_name }}</strong></p>
+    {% endif %}
+    <a href="{% url 'hello' %}">Back to Hello</a>
+</body>
+</html>

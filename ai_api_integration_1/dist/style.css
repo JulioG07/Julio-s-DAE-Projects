@@ -33,7 +33,7 @@
     padding: 30px 40px;
     border: 2px solid rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(6px);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
 
 }
 .wrapper h1{
@@ -142,7 +142,7 @@
     margin-bottom: -25px;
 }
 
-nav{
+.homenav{
     background-color: purple;
     display: flex;
     justify-content: space-around;
@@ -150,7 +150,7 @@ nav{
     font-size: 20px;
 }
 
-nav a{
+.homenav a{
     color: white;
     text-decoration: none;
 }

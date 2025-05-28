@@ -30,7 +30,7 @@ onSnapshot(q, (snapshot) => {
         users.push({ ...doc.data(), id: doc.id })
         });
     console.log(users)
-    })
+})
 
 document.addEventListener('DOMContentLoaded', () => {
     //siging up users 
