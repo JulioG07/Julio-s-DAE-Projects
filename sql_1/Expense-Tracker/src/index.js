@@ -52,15 +52,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     createdAt: serverTimestamp(),
                     userId: cred.user.uid
                     }).then(() => {
-                    return fetch("http://localhost/insert-user.php", {
+                    return fetch("http://localhost:8888/Expense-Tracker/insert-user.php", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({
-                        uid: cred.user.uid,
-                        firstName: firstName,
-                        lastName: lastName,
-                        email: email
+                            uid: cred.user.uid,
+                            firstName: firstName,
+                            lastName: lastName,
+                            email: email
                         })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log("PHP output:", data);
                     });
                     });
                 })
