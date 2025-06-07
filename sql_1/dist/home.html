@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link href="style.css" rel="stylesheet" />
+       <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+       <title>Home Page</title>
+   </head>
+   <body>
+       <nav>
+           <a href="home.html" class="active"><strong>Home</strong></a>
+           <a href="transactions.html"><strong>Transactions</strong></a>
+           <a href="goals.html"><strong>Goals</strong></a>
+           <a href="databases.html"><strong>Database</strong></a>
+           <button class="btnCSS logout">Log Out</button>
+       </nav>
+       
+       <div class="dashboard-container">
+           <header class="H-header">
+               <h1>Welcome <span id="firstName"></span>!</h1>
+               <p class="date" id="currentDate"></p>
+           </header>
+
+           <div class="dashboard-grid">
+               <!-- Financial Overview Card -->
+               <div class="dashboard-card overview">
+                   <h2>Financial Overview</h2>
+                   <div class="metrics-grid">
+                       <div class="metric">
+                           <h3>Total Balance</h3>
+                           <p class="amount">$<span id="totalBalance">0.00</span></p>
+                       </div>
+                       <div class="metric">
+                           <h3>Monthly Income</h3>
+                           <p class="amount">$<span id="monthlyIncome">0.00</span></p>
+                       </div>
+                       <div class="metric">
+                           <h3>Monthly Expenses</h3>
+                           <p class="amount">$<span id="monthlyExpenses">0.00</span></p>
+                       </div>
+                   </div>
+               </div>
+
+               <!-- Recent Transactions Card -->
+               <div class="dashboard-card transactions">
+                   <h2>Recent Transactions</h2>
+                   <div class="transaction-list" id="recentTransactions">
+                       <!-- Transactions will be populated by JavaScript -->
+                   </div>
+                   <a href="transactions.html" class="view-all">View All Transactions</a>
+               </div>
+
+               <!-- Financial Goals Card -->
+               <div class="dashboard-card goals">
+                   <h2>Financial Goals</h2>
+                   <div class="goals-list" id="activeGoals">
+                       <!-- Goals will be populated by JavaScript -->
+                   </div>
+                   <a href="goals.html" class="view-all">View All Goals</a>
+               </div>
+
+               <!-- Spending Categories Card -->
+               <div class="dashboard-card categories">
+                   <h2>Spending Categories</h2>
+                   <div class="categories-chart" id="spendingCategories">
+                       <!-- Categories will be populated by JavaScript -->
+                   </div>
+               </div>
+           </div>
+       </div>
+   </body>
+   <script src="bundle.js"></script>
+</html>

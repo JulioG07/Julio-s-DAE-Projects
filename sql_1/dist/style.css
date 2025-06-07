@@ -1,0 +1,546 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+
+/* home.html */
+/* Add these styles to your existing CSS file */
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.H-header {
+    margin-bottom: 15px;
+}
+
+.H-header h1 {
+    font-size: 2.25rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.date {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.dashboard-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-card h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.metric {
+    text-align: center;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.metric h3 {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.amount {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.transaction-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.goals-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.view-all {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #3498db;
+    text-decoration: none;
+}
+
+.view-all:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Navigation Styles */
+nav {
+    background: #2c3e50;
+    padding: 15px 20px;
+    margin-bottom: 30px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover, nav a.active {
+    background-color: #34495e;
+}
+
+.btnCSS.logout {
+    float: right;
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(255, 77, 77, 0.2);
+}
+
+.btnCSS.logout:hover {
+    background: #ff3333;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(255, 77, 77, 0.3);
+}
+
+.btnCSS.logout:active {
+    background: #ff1a1a;
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(255, 77, 77, 0.2);
+}
+
+/* login & signup HTML */
+.body1{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    min-height: 100vh;
+    background: url(loginpic.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+.body2{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    min-height: 100vh;
+    background: url(signinpic.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+.wrapper{
+    width: 420px;
+    background: transparent;
+    color: white;
+    border-radius: 10px;
+    padding: 30px 40px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+
+}
+.wrapper h1{
+    font-size: 36px;
+    text-align: center;
+}
+.wrapper .input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0px;
+}
+
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    font-size: 16px;
+    color: white;
+    padding: 20px 45px 20px 20px;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 40px; 
+}
+.input-box input::placeholder{
+    color: white;
+}
+
+.input-box i{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    font-size: 20px;
+    transform: translateY(-50%);
+}
+
+.wrapper .btn{
+    width: 100%;
+    height: 45px;
+    background: white;
+    border: none; 
+    outline: none;
+    border-radius: 40px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+.wrapper .btn:hover{
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff; 
+    border-color: #fff;
+}
+
+.btnCSS {
+    width: 12%;
+    height: 45px;
+    background: red;
+    border: none; 
+    outline: none;
+    border-radius: 40px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    color: white;
+    font-weight: 600;
+}
+
+.wrapper .register-link{
+    font-size: 14.5px;
+    text-align: center;
+    margin-top: 20px;
+}
+.aboutme-link {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10; 
+}
+
+.aboutme-link a {
+    color: white;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.aboutme-link a:hover {
+    text-decoration: underline;
+}
+.register-link p a{
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 15px;
+}
+.register-link p a:hover{
+    text-decoration: underline; 
+}
+
+/* home.html */
+.nameWrap{
+    display: flex;
+    gap: 20px;
+    margin-bottom: -25px;
+}
+
+nav{
+    background-color: purple;
+    display: flex;
+    justify-content: space-around;
+    padding: 25px; 
+    font-size: 20px;
+}
+
+nav a{
+    color: white;
+    text-decoration: none;
+}
+
+.H-header{
+    display: flex;
+    justify-content: center;
+}
+
+/* --- Goals Page Styles --- */
+
+.goals-page-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.goals-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.goals-container {
+    display: flex;
+    justify-content: center;
+}
+
+.goals-container.has-display {
+    justify-content: space-between;
+}
+
+.goals-form-wrap {
+    background: white;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.goals-container.has-display .goals-form-wrap {
+    max-width: 45%;
+}
+
+.goals-form-wrap h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.goals-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group span {
+    color: #333;
+}
+
+.goals-form input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.goals-form input:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+.submit-goal-btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.submit-goal-btn:hover {
+    background: #2980b9;
+}
+
+.goals-display-wrap {
+    background: white;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.progress-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.progress-ring {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+.progress-ring__bg {
+    stroke: #f0f0f0;
+}
+
+.progress-ring__circle {
+    stroke: #3498db;
+    stroke-linecap: round;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+.progress-ring__text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#progressPercent {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.progress-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+.goal-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    width: 100%;
+}
+
+.stat-item {
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.stat-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.goal-message {
+    text-align: center;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .goals-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .goal-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Databases.html Style --- */
+.databaseTable {
+    display: flex;
+    justify-content: center;
+}
+
+.db-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 32px 0;
+    font-size: 1rem;
+}
+
+.db-table th, .db-table td {
+    padding: 14px 12px;
+    text-align: center;
+}
+
+.db-table th {
+    background: #6a1b9a;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.db-table tr:nth-child(even) {
+    background: #f3e5f5;
+}
+
+.db-table tr:nth-child(odd) {
+    background: #fff;
+}
+
+.db-table tr:hover {
+    background: #ede7f6;
+    transition: background 0.2s;
+}
+
+.db-table td {
+    color: #333;
+}

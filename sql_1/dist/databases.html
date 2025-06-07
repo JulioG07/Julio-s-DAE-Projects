@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style.css" rel="stylesheet" />
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <title>Databases</title>
+    </head>
+    <body>
+        <nav>
+           <a href="home.html"><strong>Home</strong></a>
+            <a href="transactions.html"><strong>Transactions</strong></a>
+            <a href="goals.html"><strong>Goals</strong></a>
+            <a href="databases.html" class="active"><strong>Database</strong></a>
+            <button class="btnCSS logout">Log Out</button>
+        </nav>
+        <header class="H-header">
+            <h1>About our users</h1>
+        </header>
+        <di class="databaseTable">
+            <div id="databaseTable"></div>
+        </div>
+    </body>
+    <script>
+    function renderTable(data) {    
+        if (!data.length) {
+            document.getElementById('databaseTable').innerHTML = "<p>No data found.</p>";
+            return;
+        }
+        let html = `<table class="db-table">
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Salary</th>
+                        <th>Savings Goal</th>
+                        <th>Goal Set Date</th>
+                        <th>Expenses</th>
+                        <th>Progress (%)</th>
+                        <th>On Track</th>
+                    </tr>
+                </thead>
+                <tbody>`;
+            data.forEach(row => {
+                html += `<tr>
+                    <td>${row.user_id ?? ''}</td>
+                    <td>${row.first_name ?? ''}</td>
+                    <td>${row.last_name ?? ''}</td>
+                    <td>${row.salary ?? ''}</td>
+                    <td>${row.goal_amount ?? ''}</td>
+                    <td>${row.date_set ?? ''}</td>
+                    <td>${row.expenses ?? ''}</td>
+                    <td>${row.progress_percent ?? ''}</td>
+                    <td>${row.onTrack == 1 ? 'Yes' : 'No'}</td>
+                </tr>`;
+            });
+        html += `</tbody></table>`;
+        html += `</tbody></table>`;
+        document.getElementById('databaseTable').innerHTML = html;
+    }
+
+fetch('/Expense-Tracker/get-database.php')
+    .then(res => res.json())
+    .then(renderTable)
+    .catch(() => {
+        document.getElementById('databaseTable').innerHTML = "<p>Error loading data.</p>";
+    });
+</script>
+    <script src="bundle.js"></script>
+</html>
